@@ -1,44 +1,49 @@
-## DegenStore - DegenTokens
+DegenGames Contract
+This contract, named DegenGames, is an Avalanche smart contract developed using Solidity. It utilizes the ERC20 token standard and is deployed on the Avalanche blockchain. The contract facilitates the management of a token called Degen (DGN) and provides functionality for minting, transferring, burning tokens, redeeming items, withdrawing funds, and checking balances.
 
-### Overview 
+Contract Overview
+ERC20 Token
+DegenGames is an ERC20 token, implementing standard functions and events defined by the ERC20 interface. This allows users to interact with the token using common interfaces and tools compatible with the Avalanche blockchain.
 
-DegenStore is a smart contract designed to operate on the Avalanche blockchain. It facilitates the creation and management of a unique token system within the gaming ecosystem. Players earn these tokens through in-game achievements, enabling them to access exclusive rewards and engage in trading activities. The use of the Avalanche blockchain ensures fast and cost-effective transactions, enhancing the overall gaming experience. This smart contract aligns with Degen Gaming's vision to elevate player loyalty and revolutionize in-game economies.
+Ownership
+The contract utilizes the Ownable contract from the OpenZeppelin library, enabling ownership management. The owner has special privileges, such as minting tokens and withdrawing funds.
+
+Error Handling
+The contract defines a custom error, INSUFFICIENT_TOKEN_BALANCE, which is used to revert transactions when a user's token balance is insufficient for a particular operation.
+
+Redeemable Items
+The contract includes an enum, ItemsToRedeem, listing items users can redeem using their DGN tokens. These items include Vehicle, Nitro, Suspensions, and Brakes.
+
+Item Prices
+Each redeemable item is associated with a price denominated in DGN tokens. These prices are stored in a mapping called itemPrices.
+
+Contract Functions
+Mint
+The mint function allows the contract owner to create new DGN tokens and assign them to a specified address.
+
+Transfer DGN Tokens
+The transferDGNToken function enables users to transfer DGN tokens to another address.
+
+Burn
+The burn function allows users to permanently remove DGN tokens from circulation by burning them.
+
+Redeem Items
+The redeemItems function enables users to redeem items using their DGN tokens. Users specify the item they want to redeem, and if they have enough tokens, the corresponding amount is transferred to the contract.
+
+Withdraw Funds
+The withdrawFunds function allows the contract owner to withdraw any DGN tokens held by the contract.
+
+Get Balance
+The getBalance function allows users to check their DGN token balance.
+
+Usage
+To interact with this contract, users can send transactions using Avalanche wallets or interact with it programmatically using Avalanche smart contract interfaces.
+
+Please note that deploying or interacting with smart contracts on Avalanche involves AVAX gas fees. Users should exercise caution when performing transactions.
 
 
-### Project Features
-
-- Minting new tokens: The platform should be able to create new tokens and distribute them to players as rewards. Only the owner can mint tokens.
-
-- Transferring tokens: Players should be able to transfer their tokens to others.
-
-- Redeeming tokens: Players should be able to redeem their tokens for items in the in-game store.
-
-- Checking token balance: Players should be able to check their token balance at any time.
-
-- Burning tokens: Anyone should be able to burn tokens, that they own, that are no longer needed.
 
 
-## Getting Started
-
-Follow these steps to get the project up and running on your local machine.
-
-**Prerequisites**
-
-    - Node.js and npm installed on your machine.
-
-- Clone the repository using the command - git clone https://github.com/username/projectname.git
-- Change directory into your project file - cd projectname
-- Install all dependencies with - npm install
-- Compile the contract using Hardhat - npx hardhat compile 
-- Run deployment script- npx hardhat run scripts/deploy.js —-network fuji 
-- Verify the contract on snowtrace - npx hardhat verify --network fuji contract address
-- Interact with the deployed contract through transactions like transfers, minting, and burning.
-
-## Author
-
-- Khemmie-Ray
 
 
-## License
 
-This project is licensed under the [Khemmie-Ray] License - see the LICENSE.md file for details.
